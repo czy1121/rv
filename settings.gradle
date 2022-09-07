@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url cosmoRepoPath }
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "rv"
+include ':app'
+
+include ':rv-decoration'
+include ':rv-itemtype'
+include ':rv-loadmore'
+include ':rv-selection'
+

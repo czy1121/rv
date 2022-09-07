@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016 czy1121
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="state_loading" tools:ignore="TypographyEllipsis">Loading...</string>
+    <string name="state_empty">No Records</string>
+    <string name="state_error">Network failure, please check network connection</string>
+    <string name="state_btn_retry">Retry</string>
+
+    <string name="load_more_loading" tools:ignore="TypographyEllipsis">Loading...</string>
+    <string name="load_more_offline">Sorry, no network now</string>
+    <string name="load_more_empty">No Records</string>
+    <string name="load_more_has_more" tools:ignore="TypographyEllipsis">Loading…</string>
+    <string name="load_more_ended">End</string>
+    <string name="load_more_error">Sorry, some error happened, click here to reload</string>
+
+</resources>

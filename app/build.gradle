@@ -1,0 +1,19 @@
+
+apply from: "$buildGradlePath/build-library-demo.gradle"
+
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+
+    implementation project(":rv-decoration")
+    implementation project(":rv-itemtype")
+    implementation project(":rv-loadmore")
+    implementation project(":rv-selection")
+
+
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:4.10.0"
+
+    // 图像加载
+    implementation "io.coil-kt:coil:2.1.0"
+}
