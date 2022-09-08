@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.demo.app.databinding.ActivityMainBinding
-import me.reezy.cosmo.rv.itemtype.adapter.MultipleTypeAdapter
-import me.reezy.cosmo.rv.itemtype.adapter.SingleTypeAdapter
+import me.reezy.cosmo.rv.itemtype.ItemTypeAdapter
+import me.reezy.cosmo.rv.itemtype.SingleTypeAdapter
 import me.reezy.cosmo.rv.itemtype.bindingType
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     )
 
     private val adapter2 by lazy {
-        MultipleTypeAdapter<Any>().setup {
+        ItemTypeAdapter<Any>().setup {
             add(bindingType<Link>(R.layout.item_link))
             add(bindingType<Link2>(R.layout.item_link2))
         }

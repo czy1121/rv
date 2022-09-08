@@ -1,11 +1,8 @@
-package me.reezy.cosmo.rv.itemtype.adapter
+package me.reezy.cosmo.rv.itemtype
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.ListAdapter
-import me.reezy.cosmo.rv.itemtype.ItemDiffCallback
-import me.reezy.cosmo.rv.itemtype.ItemHolder
-import me.reezy.cosmo.rv.itemtype.ItemType
 
 
 class SingleTypeAdapter<Item : Any, Holder : ItemHolder>(

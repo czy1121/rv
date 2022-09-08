@@ -3,12 +3,12 @@ package me.reezy.cosmo.rv.loadmore
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.*
 import me.reezy.cosmo.rv.itemtype.*
-import me.reezy.cosmo.rv.itemtype.adapter.MultipleTypeAdapter
+import me.reezy.cosmo.rv.itemtype.ItemTypeAdapter
 import me.reezy.cosmo.statelayout.StateLayout
 import me.reezy.cosmo.statelayout.StatePresenter
 
 @Suppress("UNCHECKED_CAST", "MemberVisibilityCanBePrivate")
-class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder(ItemDiffCallback()).build()) : MultipleTypeAdapter<Any>(config) {
+class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder(ItemDiffCallback()).build()) : ItemTypeAdapter<Any>(config) {
 
     companion object {
         const val STATE_LOADING = 0
@@ -50,7 +50,7 @@ class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder
         loadMoreTrigger.onLoadMore = listener
     }
 
-    override fun setup(vararg types: ItemType<Any, ItemHolder>): MultipleTypeAdapter<Any> {
+    override fun setup(vararg types: ItemType<Any, ItemHolder>): ItemTypeAdapter<Any> {
         return super.setup(loadMoreItemType as ItemType<Any, ItemHolder>, *types)
     }
 

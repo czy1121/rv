@@ -4,7 +4,7 @@ RecyclerView 扩展：itemtype, loadmore, selection, decoration
 
 - rv-itemtype
   - 基于 ListAdapter 内置支持 AsyncListDiffer
-  - 支持单类型列表(SingleTypeAdapter)和多类型列表(MultipleTypeAdapter)
+  - 支持单类型列表(SingleTypeAdapter)和多类型列表(ItemTypeAdapter)
   - `ItemType<Item, Holder>` 表示列表里的一个类型
     - 通过 create 创建 Holder
     - 通过 matches 判断是否与数据(Item)关联
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 }
 ```
 
-## MultipleTypeAdapter 用法
+## ItemTypeAdapter 用法
 
 
 ```kotlin
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     )
 
     private val adapter by lazy {
-        MultipleTypeAdapter<Any>().setup {
+        ItemTypeAdapter<Any>().setup {
             add(bindingType<Link>(R.layout.item_link))
             add(bindingType<Link2>(R.layout.item_link2))
         }
