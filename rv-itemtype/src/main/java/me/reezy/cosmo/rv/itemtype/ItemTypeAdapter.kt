@@ -16,8 +16,8 @@ open class ItemTypeAdapter<Item: Any>(config: AsyncDifferConfig<Item> = AsyncDif
     }
     fun setup(registry: ItemTypeRegistry? = null, append: ItemTypeRegistry.() -> Unit = {}): ItemTypeAdapter<Item> {
         val r = ItemTypeRegistry()
-        registry?.let {
-            r.add(*it.toArray())
+        registry?.toArray()?.forEach {
+            r.add(it)
         }
         r.append()
         setup(*r.toArray())
@@ -44,7 +44,8 @@ open class ItemTypeAdapter<Item: Any>(config: AsyncDifferConfig<Item> = AsyncDif
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         if (holder.itemViewType != RecyclerView.INVALID_TYPE) {
-            itemTypes[holder.itemViewType].bind(holder, getItem(position))
+            val item = getItem(position)
+            itemTypes[holder.itemViewType].bind(holder, item)
         }
     }
 }
