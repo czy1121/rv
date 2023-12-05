@@ -3,7 +3,10 @@ package me.reezy.cosmo.rv.loadmore
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.*
 import me.reezy.cosmo.rv.itemtype.*
-import me.reezy.cosmo.rv.itemtype.ItemTypeAdapter
+import me.reezy.cosmo.rv.itemtype.adapter.ItemTypeAdapter
+import me.reezy.cosmo.rv.itemtype.holder.ItemHolder
+import me.reezy.cosmo.rv.itemtype.type.ViewItemType
+import me.reezy.cosmo.rv.itemtype.util.ItemDiffCallback
 import me.reezy.cosmo.statelayout.StateLayout
 import me.reezy.cosmo.statelayout.StatePresenter
 
@@ -27,6 +30,7 @@ class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder
 
     private var loadMoreItem = LoadMoreItem()
     private var loadMoreItemType = ViewItemType(LoadMoreItem::class.java, StateLayout::class.java) { holder, item ->
+        holder.view.isFocusable = false
         loadMorePresenter.show(holder.view, item.state)
     }
 
@@ -50,26 +54,32 @@ class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder
         loadMoreTrigger.onLoadMore = listener
     }
 
-    override fun setup(vararg types: ItemType<Any, ItemHolder>): ItemTypeAdapter<Any> {
-        return super.setup(loadMoreItemType as ItemType<Any, ItemHolder>, *types)
+    override fun setItemTypes(vararg types: ItemType<Any, ItemHolder>): ItemTypeAdapter<Any> {
+        return super.setItemTypes(loadMoreItemType as ItemType<Any, ItemHolder>, *types)
     }
 
 
     fun startLoading(online: Boolean = true) {
         if (currentList.isEmpty()) {
-            setStatus(if (online) STATE_LOADING else STATE_OFFLINE)
+            if (setStatus(if (online) STATE_LOADING else STATE_OFFLINE)) {
+                notifyItemChanged(itemCount - 1)
+            }
         }
     }
 
     fun startLoadMore() {
         if (!loadMoreTrigger.isLoading) {
-            setStatus(STATE_HAS_MORE)
+            if (setStatus(STATE_HAS_MORE)) {
+                notifyItemChanged(itemCount - 1)
+            }
             loadMoreTrigger.loadMore()
         }
     }
 
     fun showError() {
-        setStatus(STATE_ERROR)
+        if (setStatus(STATE_ERROR)) {
+            notifyItemChanged(itemCount - 1)
+        }
     }
 
 
@@ -78,22 +88,31 @@ class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder
 
         val newList = if (isRefresh) list else (listOf<Any>() + currentList + list)
 
-        submitList(newList)
-
-        when {
+        val changed = when {
             newList.isEmpty() -> setStatus(STATE_EMPTY)
             hasMore -> setStatus(STATE_HAS_MORE)
             else -> setStatus(STATE_ENDED)
         }
+        if (changed) {
+            notifyItemRemoved(itemCount - 1)
+        }
+        submitList(newList) {
+            if (changed) {
+                notifyItemInserted(itemCount - 1)
+            }
+        }
+
     }
 
-    private fun setStatus(status: Int) {
-        if (loadMoreVisible && loadMoreItem.state != status) {
-            notifyItemChanged(itemCount - 1)
-        }
+    private fun setStatus(status: Int): Boolean {
+        val changed = loadMoreVisible && loadMoreItem.state != status
+//        if (changed) {
+//            notifyItemChanged(itemCount - 1)
+//        }
         loadMoreItem.state = status
         loadMoreTrigger.hasMore = status == STATE_HAS_MORE
         loadMoreTrigger.isLoading = false
+        return changed
     }
 
 

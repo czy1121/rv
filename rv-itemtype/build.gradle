@@ -2,8 +2,8 @@
 apply from: "$buildGradlePath/build-library-android.gradle"
 
 dependencies {
-    api 'androidx.appcompat:appcompat:1.5.0'
-    api 'androidx.recyclerview:recyclerview:1.2.1'
+    api libs.androidx.appcompat
+    api libs.androidx.recyclerview
 
-    compileOnly "androidx.databinding:databinding-runtime:7.2.1"
+    compileOnly "androidx.databinding:databinding-runtime:7.4.2"
 }

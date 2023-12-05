@@ -2,7 +2,6 @@ package me.reezy.cosmo.rv.loadmore
 
 import androidx.recyclerview.widget.RecyclerView
 import me.reezy.cosmo.loadmore.R
-import me.reezy.cosmo.statelayout.SimpleStateView
 import me.reezy.cosmo.statelayout.StateLayout
 import me.reezy.cosmo.statelayout.StatePresenter
 
@@ -24,39 +23,39 @@ class LoadMorePresenter(
     override fun show(layout: StateLayout, state: Int) {
         when (state) {
             // loadingAnimation
-            LoadMoreAdapter.STATE_LOADING -> layout.showStateView<SimpleStateView>().apply {
-                setHeightMatchParent()
+            LoadMoreAdapter.STATE_LOADING -> layout.showStateView<LoadMoreStateView>().apply {
+                setFullHeight(true)
                 setText(loadingTextResId)
                 setImage(loadingImageResId)
             }
             // noNetworkImage, noNetworkText
-            LoadMoreAdapter.STATE_OFFLINE -> layout.showStateView<SimpleStateView>().apply {
-                setHeightMatchParent()
+            LoadMoreAdapter.STATE_OFFLINE -> layout.showStateView<LoadMoreStateView>().apply {
+                setFullHeight(true)
                 setText(offlineTextResId)
                 setImage(offlineImageResId)
             }
             // emptyImage, emptyText
-            LoadMoreAdapter.STATE_EMPTY -> layout.showStateView<SimpleStateView>().apply {
-                setHeightMatchParent()
+            LoadMoreAdapter.STATE_EMPTY -> layout.showStateView<LoadMoreStateView>().apply {
+                setFullHeight(true)
                 setText(emptyTextResId)
                 setImage(emptyImageResId)
             }
 
             // loadMore: loading
-            LoadMoreAdapter.STATE_HAS_MORE -> layout.showStateView<SimpleStateView>().apply {
-                setHeight(60f)
+            LoadMoreAdapter.STATE_HAS_MORE -> layout.showStateView<LoadMoreStateView>().apply {
+                setFullHeight(false)
                 setText(hasMoreTextResId)
                 setImage(hasMoreImageResId)
             }
             // loadMore: ended
-            LoadMoreAdapter.STATE_ENDED -> layout.showStateView<SimpleStateView>().apply {
-                setHeight(60f)
+            LoadMoreAdapter.STATE_ENDED -> layout.showStateView<LoadMoreStateView>().apply {
+                setFullHeight(false)
                 setText(endedTextResId)
                 setImage(endedImageResId)
             }
             // loadMore: error
-            LoadMoreAdapter.STATE_ERROR -> layout.showStateView<SimpleStateView>().apply {
-                setHeight(60f)
+            LoadMoreAdapter.STATE_ERROR -> layout.showStateView<LoadMoreStateView>().apply {
+                setFullHeight(false)
                 setText(errorTextResId) {
                     ((layout.parent as? RecyclerView)?.adapter as? LoadMoreAdapter)?.startLoadMore()
                 }
@@ -64,4 +63,5 @@ class LoadMorePresenter(
             }
         }
     }
+
 }

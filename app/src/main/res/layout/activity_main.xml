@@ -7,14 +7,22 @@
     android:orientation="vertical"
     tools:context="com.demo.app.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

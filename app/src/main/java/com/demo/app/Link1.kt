@@ -1,6 +1,6 @@
 package com.demo.app
 
-data class Link(
+data class Link1(
     val text: String? = null,
     val image: String? = null,
     val desc: String? = null,

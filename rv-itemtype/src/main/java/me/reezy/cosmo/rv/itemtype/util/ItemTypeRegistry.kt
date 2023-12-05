@@ -1,4 +1,7 @@
-package me.reezy.cosmo.rv.itemtype
+package me.reezy.cosmo.rv.itemtype.util
+
+import me.reezy.cosmo.rv.itemtype.ItemType
+import me.reezy.cosmo.rv.itemtype.holder.ItemHolder
 
 class ItemTypeRegistry {
     private val types = mutableListOf<ItemType<Any, ItemHolder>>()

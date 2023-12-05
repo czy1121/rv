@@ -1,4 +1,4 @@
-package me.reezy.cosmo.rv.itemtype
+package me.reezy.cosmo.rv.itemtype.util
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil

@@ -58,11 +58,11 @@ internal class LoadMoreTrigger : RecyclerView.OnScrollListener(), NestedScrollVi
     }
 
 
-    override fun onViewAttachedToWindow(v: View?) {
+    override fun onViewAttachedToWindow(v: View) {
         attachNestedScrollView()
     }
 
-    override fun onViewDetachedFromWindow(v: View?) {
+    override fun onViewDetachedFromWindow(v: View) {
         detachNestedScrollView()
     }
 

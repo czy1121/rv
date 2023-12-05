@@ -1,4 +1,4 @@
-package me.reezy.cosmo.rv.itemtype
+package me.reezy.cosmo.rv.itemtype.holder
 
 import android.view.View
 

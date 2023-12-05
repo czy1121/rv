@@ -7,7 +7,7 @@ import coil.Coil
 import coil.ImageLoader
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
-import me.reezy.cosmo.rv.itemtype.LayoutItemType
+import me.reezy.cosmo.rv.itemtype.type.LayoutItemType
 
 class App: Application() {
 

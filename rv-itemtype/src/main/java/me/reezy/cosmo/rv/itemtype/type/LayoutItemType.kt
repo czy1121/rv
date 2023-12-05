@@ -1,8 +1,11 @@
-package me.reezy.cosmo.rv.itemtype
+package me.reezy.cosmo.rv.itemtype.type
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import me.reezy.cosmo.rv.itemtype.ItemType
+import me.reezy.cosmo.rv.itemtype.ItemSubtype
+import me.reezy.cosmo.rv.itemtype.holder.ItemHolder
 
 class LayoutItemType<Item>(
     private val itemClass: Class<Item>,

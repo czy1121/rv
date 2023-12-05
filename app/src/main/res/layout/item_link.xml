@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.demo.app.Link" />
+            type="com.demo.app.Link1" />
     </data>
 
 
