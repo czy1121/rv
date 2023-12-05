@@ -12,7 +12,7 @@ class StringKeyDetailsLookup(
     override fun getItemDetails(e: MotionEvent): ItemDetails<String> {
         val view = rv.findChildViewUnder(e.x, e.y) ?: return StringKeyItemDetails.EMPTY
         val holder = rv.getChildViewHolder(view) ?: return StringKeyItemDetails.EMPTY
-        val position = holder.bindingAdapterPosition
+        val position = holder.adapterPosition
         val key = provider.getKey(position) ?: return StringKeyItemDetails.EMPTY
         return StringKeyItemDetails(position, key)
     }

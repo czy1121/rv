@@ -23,38 +23,38 @@ class LoadMorePresenter(
     override fun show(layout: StateLayout, state: Int) {
         when (state) {
             // loadingAnimation
-            LoadMoreAdapter.STATE_LOADING -> layout.showStateView<LoadMoreStateView>().apply {
+            LoadMoreAdapter.STATE_LOADING -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(true)
                 setText(loadingTextResId)
                 setImage(loadingImageResId)
             }
             // noNetworkImage, noNetworkText
-            LoadMoreAdapter.STATE_OFFLINE -> layout.showStateView<LoadMoreStateView>().apply {
+            LoadMoreAdapter.STATE_OFFLINE -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(true)
                 setText(offlineTextResId)
                 setImage(offlineImageResId)
             }
             // emptyImage, emptyText
-            LoadMoreAdapter.STATE_EMPTY -> layout.showStateView<LoadMoreStateView>().apply {
+            LoadMoreAdapter.STATE_EMPTY -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(true)
                 setText(emptyTextResId)
                 setImage(emptyImageResId)
             }
 
             // loadMore: loading
-            LoadMoreAdapter.STATE_HAS_MORE -> layout.showStateView<LoadMoreStateView>().apply {
+            LoadMoreAdapter.STATE_HAS_MORE -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(false)
                 setText(hasMoreTextResId)
                 setImage(hasMoreImageResId)
             }
             // loadMore: ended
-            LoadMoreAdapter.STATE_ENDED -> layout.showStateView<LoadMoreStateView>().apply {
+            LoadMoreAdapter.STATE_ENDED -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(false)
                 setText(endedTextResId)
                 setImage(endedImageResId)
             }
             // loadMore: error
-            LoadMoreAdapter.STATE_ERROR -> layout.showStateView<LoadMoreStateView>().apply {
+            LoadMoreAdapter.STATE_ERROR -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(false)
                 setText(errorTextResId) {
                     ((layout.parent as? RecyclerView)?.adapter as? LoadMoreAdapter)?.startLoadMore()
