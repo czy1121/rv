@@ -5,5 +5,5 @@ dependencies {
 
     api project(":rv-itemtype")
 
-    api 'me.reezy.cosmo:statelayout:0.8.0'
+    api 'me.reezy.cosmo:statelayout:0.9.1'
 }

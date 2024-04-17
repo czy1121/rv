@@ -97,9 +97,9 @@ class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder
             notifyItemRemoved(itemCount - 1)
         }
         submitList(newList) {
-            if (changed) {
-                notifyItemInserted(itemCount - 1)
-            }
+//            if (changed) {
+//                notifyItemInserted(itemCount - 1)
+//            }
         }
 
     }

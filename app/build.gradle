@@ -10,6 +10,8 @@ dependencies {
     implementation project(":rv-loadmore")
     implementation project(":rv-selection")
 
+    implementation "me.reezy.cosmo:pullrefresh:0.8.0"
+    implementation "me.reezy.cosmo:pullrefresh-simple:0.8.0"
 
     implementation "com.squareup.okhttp3:okhttp:4.10.0"
     implementation "com.squareup.okhttp3:okhttp-urlconnection:4.10.0"

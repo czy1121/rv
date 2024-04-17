@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.demo.app.MainActivity">
 
-    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+    <me.reezy.cosmo.pullrefresh.PullRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,6 +23,6 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </me.reezy.cosmo.pullrefresh.PullRefreshLayout>
 
 </LinearLayout>
