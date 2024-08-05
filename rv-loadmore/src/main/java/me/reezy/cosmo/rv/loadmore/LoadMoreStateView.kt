@@ -14,12 +14,6 @@ import me.reezy.cosmo.statelayout.StateLayout
 
 class LoadMoreStateView(context: Context) : LinearLayoutCompat(context) {
 
-    companion object {
-        var defaultTextColor: Int = (0xff999999).toInt()
-        var defaultTextSize: Float = 14f
-        var defaultTypeface: Typeface? = null
-    }
-
     val vImage = AppCompatImageView(context)
     val vText = AppCompatTextView(context)
 
@@ -32,13 +26,13 @@ class LoadMoreStateView(context: Context) : LinearLayoutCompat(context) {
         addView(Space(context), LayoutParams(LayoutParams.WRAP_CONTENT, (resources.displayMetrics.density * 10).toInt()))
         addView(vText, LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT))
 
-        setTextStyle()
+        setTextStyle(null)
     }
 
-    fun setTextStyle(color: Int = defaultTextColor, size: Float = defaultTextSize, typeface: Typeface? = defaultTypeface) {
-        vText.setTextColor(color)
-        vText.textSize = size
-        vText.typeface = typeface
+    fun setTextStyle(style: LoadMoreTextStyle?) {
+        vText.setTextColor(style?.color ?: LoadMoreTextStyle.defaultTextColor)
+        vText.textSize = style?.size ?: LoadMoreTextStyle.defaultTextSize
+        vText.typeface = style?.typeface ?: LoadMoreTextStyle.defaultTypeface
     }
 
     fun setFullHeight(isFull: Boolean) {

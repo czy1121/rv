@@ -12,7 +12,7 @@ internal class LoadMoreTrigger : RecyclerView.OnScrollListener(), NestedScrollVi
     var isLoading = false
     var visibleThreshold = 3
 
-    private var recyclerView: RecyclerView? = null
+    var recyclerView: RecyclerView? = null
     private var nestedScrollView: NestedScrollView? = null
 
     fun loadMore() {

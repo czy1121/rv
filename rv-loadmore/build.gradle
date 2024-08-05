@@ -3,7 +3,7 @@ apply from: "$buildGradlePath/build-library-android.gradle"
 
 dependencies {
 
-    api project(":rv-itemtype")
+    compileOnly project(":rv-itemtype")
 
     api 'me.reezy.cosmo:statelayout:0.9.1'
 }

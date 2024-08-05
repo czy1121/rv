@@ -97,18 +97,16 @@ class LoadMoreAdapter(config: AsyncDifferConfig<Any> = AsyncDifferConfig.Builder
             notifyItemRemoved(itemCount - 1)
         }
         submitList(newList) {
-//            if (changed) {
-//                notifyItemInserted(itemCount - 1)
-//            }
+            if (isRefresh) {
+
+                loadMoreTrigger.recyclerView?.scrollToPosition(0)
+            }
         }
 
     }
 
-    private fun setStatus(status: Int): Boolean {
+    fun setStatus(status: Int): Boolean {
         val changed = loadMoreVisible && loadMoreItem.state != status
-//        if (changed) {
-//            notifyItemChanged(itemCount - 1)
-//        }
         loadMoreItem.state = status
         loadMoreTrigger.hasMore = status == STATE_HAS_MORE
         loadMoreTrigger.isLoading = false

@@ -6,19 +6,29 @@ import me.reezy.cosmo.statelayout.StateLayout
 import me.reezy.cosmo.statelayout.StatePresenter
 
 open class LoadMorePresenter(
-    var loadingTextResId: Int = R.string.load_more_loading,
-    var offlineTextResId: Int = R.string.load_more_offline,
-    var emptyTextResId: Int = R.string.load_more_empty,
-    var hasMoreTextResId: Int = R.string.load_more_has_more,
-    var endedTextResId: Int = R.string.load_more_ended,
-    var errorTextResId: Int = R.string.load_more_error,
     var loadingImageResId: Int = 0,
+    var loadingTextResId: Int = R.string.load_more_loading,
+    var loadingTextStyle: LoadMoreTextStyle? = null,
+
     var offlineImageResId: Int = 0,
+    var offlineTextResId: Int = R.string.load_more_offline,
+    var offlineTextStyle: LoadMoreTextStyle? = null,
+
     var emptyImageResId: Int = 0,
+    var emptyTextResId: Int = R.string.load_more_empty,
+    var emptyTextStyle: LoadMoreTextStyle? = null,
+
     var hasMoreImageResId: Int = 0,
+    var hasMoreTextResId: Int = R.string.load_more_has_more,
+    var hasMoreTextStyle: LoadMoreTextStyle? = null,
+
     var endedImageResId: Int = 0,
+    var endedTextResId: Int = R.string.load_more_ended,
+    var endedTextStyle: LoadMoreTextStyle? = null,
+
     var errorImageResId: Int = 0,
-    var setStyle: LoadMoreStateView.(state: Int) -> Unit = { setTextStyle() }
+    var errorTextResId: Int = R.string.load_more_error,
+    var errorTextStyle: LoadMoreTextStyle? = null,
 ) : StatePresenter {
 
     override fun show(layout: StateLayout, state: Int) {
@@ -28,21 +38,21 @@ open class LoadMorePresenter(
                 setFullHeight(true)
                 setText(loadingTextResId)
                 setImage(loadingImageResId)
-                setStyle(state)
+                setTextStyle(loadingTextStyle)
             }
             // noNetworkImage, noNetworkText
             LoadMoreAdapter.STATE_OFFLINE -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(true)
                 setText(offlineTextResId)
                 setImage(offlineImageResId)
-                setStyle(state)
+                setTextStyle(offlineTextStyle)
             }
             // emptyImage, emptyText
             LoadMoreAdapter.STATE_EMPTY -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(true)
                 setText(emptyTextResId)
                 setImage(emptyImageResId)
-                setStyle(state)
+                setTextStyle(emptyTextStyle)
             }
 
             // loadMore: loading
@@ -50,14 +60,14 @@ open class LoadMorePresenter(
                 setFullHeight(false)
                 setText(hasMoreTextResId)
                 setImage(hasMoreImageResId)
-                setStyle(state)
+                setTextStyle(hasMoreTextStyle)
             }
             // loadMore: ended
             LoadMoreAdapter.STATE_ENDED -> layout.showStateView<LoadMoreStateView>()?.apply {
                 setFullHeight(false)
                 setText(endedTextResId)
                 setImage(endedImageResId)
-                setStyle(state)
+                setTextStyle(endedTextStyle)
             }
             // loadMore: error
             LoadMoreAdapter.STATE_ERROR -> layout.showStateView<LoadMoreStateView>()?.apply {
@@ -66,7 +76,7 @@ open class LoadMorePresenter(
                     ((layout.parent as? RecyclerView)?.adapter as? LoadMoreAdapter)?.startLoadMore()
                 }
                 setImage(errorImageResId)
-                setStyle(state)
+                setTextStyle(errorTextStyle)
             }
         }
     }
