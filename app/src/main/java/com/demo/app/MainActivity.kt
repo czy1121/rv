@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.demo.app.databinding.ActivityMainBinding
+import com.demo.rv.R
+import com.demo.rv.databinding.ActivityMainBinding
+import com.demo.rv.databinding.ItemLink2Binding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.reezy.cosmo.pullrefresh.PullRefreshLayout
@@ -49,7 +51,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val adapter by lazy {
         LoadMoreAdapter().setup {
             add(bindingType<Link1>(R.layout.item_link))
-            add(bindingType<Link2>(R.layout.item_link2))
+            add(dataBindingType<ItemLink2Binding, Link2>(R.layout.item_link2) { holder, item ->
+                holder.binding.item = item
+            })
         }
     }
 

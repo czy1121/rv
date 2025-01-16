@@ -16,7 +16,7 @@ class LayoutItemType<Item>(
 ) : ItemType<Item, ItemHolder> {
 
     companion object {
-        var brItem: Int = 0
+        var brItem: Int = -1
     }
 
     override fun create(parent: ViewGroup): ItemHolder = ItemHolder(LayoutInflater.from(parent.context).inflate(layoutResId, parent, false))

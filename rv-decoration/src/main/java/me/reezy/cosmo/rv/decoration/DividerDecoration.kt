@@ -62,13 +62,11 @@ class DividerDecoration(
             parent.getDecoratedBoundsWithMargins(child, bounds)
 
             if (orientation == RecyclerView.VERTICAL) {
-                val bottom = bounds.bottom + child.translationY
-                val top = bottom - paint.strokeWidth
-                canvas.drawLine(insetStart, top, parent.width - insetEnd, bottom, paint)
+                val y = bounds.bottom + child.translationY - paint.strokeWidth / 2f
+                canvas.drawLine(insetStart, y, parent.width - insetEnd, y, paint)
             } else {
-                val right = bounds.right + child.translationX
-                val left = right - paint.strokeWidth
-                canvas.drawLine(left, insetStart, right, parent.height - insetEnd, paint)
+                val x = bounds.right + child.translationX - paint.strokeWidth / 2f
+                canvas.drawLine(x, insetStart, x, parent.height - insetEnd, paint)
             }
 
         }
