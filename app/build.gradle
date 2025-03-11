@@ -9,6 +9,7 @@ dependencies {
     implementation project(":rv-itemtype")
     implementation project(":rv-loadmore")
     implementation project(":rv-selection")
+    implementation project(":rv-animator")
 
     implementation "me.reezy.cosmo:pullrefresh:0.8.0"
     implementation "me.reezy.cosmo:pullrefresh-simple:0.8.0"

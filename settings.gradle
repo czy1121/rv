@@ -25,4 +25,5 @@ include ':rv-itemtype'
 include ':rv-loadmore'
 include ':rv-polymorph'
 include ':rv-selection'
+include ':rv-animator'
 
