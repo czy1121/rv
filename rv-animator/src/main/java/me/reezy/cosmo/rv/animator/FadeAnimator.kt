@@ -3,7 +3,7 @@ package me.reezy.cosmo.rv.animator
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class FadeInAnimator : BaseItemAnimator() {
+class FadeAnimator : BaseItemAnimator() {
     override fun onAnimateLeave(holder: ViewHolder) {
         holder.itemView.animate().alpha(0f)
     }

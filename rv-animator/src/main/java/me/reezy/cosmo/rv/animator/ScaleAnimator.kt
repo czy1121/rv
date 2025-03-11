@@ -3,7 +3,7 @@ package me.reezy.cosmo.rv.animator
 import androidx.annotation.FloatRange
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class ScaleInAnimator(
+class ScaleAnimator(
     private val scale: Float = 0f,
     @FloatRange(from = 0.0, to = 1.0)
     private val pivotX: Float = 0.5f,

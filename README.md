@@ -27,6 +27,7 @@ RecyclerView 扩展：itemtype, loadmore, selection, decoration
   - DividerDecoration 为列表项之间添加分隔线
   - SpaceDecoration 为列表项之间添加空白
 - rv-animator，自定义列表项的入场(add)/离场(remove)动画
+  - 内置支持淡入淡出(Fade)，缩放(Scale)，翻转(FlipX/FlipY)，滑动(ScaleX/ScaleY)
 
 
 ![s](screenshot.png)

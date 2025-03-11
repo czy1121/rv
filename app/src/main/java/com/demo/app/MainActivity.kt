@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.demo.rv.R
@@ -17,12 +16,12 @@ import kotlinx.coroutines.launch
 import me.reezy.cosmo.pullrefresh.PullRefreshLayout
 import me.reezy.cosmo.pullrefresh.simple.SimpleHeader
 import me.reezy.cosmo.rv.animator.BaseItemAnimator
-import me.reezy.cosmo.rv.animator.FadeInAnimator
-import me.reezy.cosmo.rv.animator.FlipInXAnimator
-import me.reezy.cosmo.rv.animator.FlipInYAnimator
-import me.reezy.cosmo.rv.animator.ScaleInAnimator
-import me.reezy.cosmo.rv.animator.SlideInXAnimator
-import me.reezy.cosmo.rv.animator.SlideInYAnimator
+import me.reezy.cosmo.rv.animator.FadeAnimator
+import me.reezy.cosmo.rv.animator.FlipXAnimator
+import me.reezy.cosmo.rv.animator.FlipYAnimator
+import me.reezy.cosmo.rv.animator.ScaleAnimator
+import me.reezy.cosmo.rv.animator.SlideXAnimator
+import me.reezy.cosmo.rv.animator.SlideYAnimator
 import me.reezy.cosmo.rv.itemtype.*
 import me.reezy.cosmo.rv.itemtype.adapter.ItemTypeAdapter
 import me.reezy.cosmo.rv.loadmore.LoadMoreAdapter
@@ -31,33 +30,33 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
     enum class Type(val animator: BaseItemAnimator) {
-        FadeIn(FadeInAnimator()),
-        ScaleIn(ScaleInAnimator()),
-        Landing(ScaleInAnimator(1.5f)),
+        FadeIn(FadeAnimator()),
+        ScaleIn(ScaleAnimator()),
+        Landing(ScaleAnimator(1.5f)),
 
-        ScaleInTop(ScaleInAnimator(pivotX = 0.5f, pivotY = 0f)),
-        ScaleInBottom(ScaleInAnimator(pivotX = 0.5f, pivotY = 1f)),
-        ScaleInLeft(ScaleInAnimator(pivotX = 0f, pivotY = 0.5f)),
-        ScaleInRight(ScaleInAnimator(pivotX = 1f, pivotY = 0.5f)),
+        ScaleInTop(ScaleAnimator(pivotX = 0.5f, pivotY = 0f)),
+        ScaleInBottom(ScaleAnimator(pivotX = 0.5f, pivotY = 1f)),
+        ScaleInLeft(ScaleAnimator(pivotX = 0f, pivotY = 0.5f)),
+        ScaleInRight(ScaleAnimator(pivotX = 1f, pivotY = 0.5f)),
 
-        FlipInTop(FlipInXAnimator(-90f)),
-        FlipInBottom(FlipInXAnimator(90f)),
-        FlipInLeft(FlipInYAnimator(-90f)),
-        FlipInRight(FlipInYAnimator(90f)),
+        FlipInTop(FlipXAnimator(-90f)),
+        FlipInBottom(FlipXAnimator(90f)),
+        FlipInLeft(FlipYAnimator(-90f)),
+        FlipInRight(FlipYAnimator(90f)),
 
 
-        FadeInLeft(SlideInXAnimator(-0.25f)),
-        FadeInRight(SlideInXAnimator(0.25f)),
-        FadeInTop(SlideInYAnimator(-0.25f)),
-        FadeInBottom(SlideInYAnimator(0.25f)),
+        FadeInLeft(SlideXAnimator(-0.25f)),
+        FadeInRight(SlideXAnimator(0.25f)),
+        FadeInTop(SlideYAnimator(-0.25f)),
+        FadeInBottom(SlideYAnimator(0.25f)),
 
-        SlideInLeft(SlideInXAnimator(-1f)),
-        SlideInRight(SlideInXAnimator(1f)),
-        SlideInTop(SlideInYAnimator(-1f)),
-        SlideInBottom(SlideInYAnimator(1f)),
+        SlideInLeft(SlideXAnimator(-1f)),
+        SlideInRight(SlideXAnimator(1f)),
+        SlideInTop(SlideYAnimator(-1f)),
+        SlideInBottom(SlideYAnimator(1f)),
 
-        OvershootInLeft(SlideInXAnimator(-1.0f).setInterceptor(OvershootInterpolator(2f), null)),
-        OvershootInRight(SlideInXAnimator(1.0f).setInterceptor(OvershootInterpolator(2f), null)),
+        OvershootInLeft(SlideXAnimator(-1.0f).setInterceptor(OvershootInterpolator(2f), null)),
+        OvershootInRight(SlideXAnimator(1.0f).setInterceptor(OvershootInterpolator(2f), null)),
     }
 
 
