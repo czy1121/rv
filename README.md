@@ -26,6 +26,7 @@ RecyclerView 扩展：itemtype, loadmore, selection, decoration
 - rv-decoration
   - DividerDecoration 为列表项之间添加分隔线
   - SpaceDecoration 为列表项之间添加空白
+- rv-animator，自定义列表项的入场(add)/离场(remove)动画
 
 
 ![s](screenshot.png)
@@ -37,10 +38,11 @@ repositories {
     maven { url "https://gitee.com/ezy/repo/raw/cosmo/"}
 }
 dependencies {
-    implementation "me.reezy.cosmo:rv-itemtype:0.7.0"
-    implementation "me.reezy.cosmo:rv-loadmore:0.7.0"
-    implementation "me.reezy.cosmo:rv-selection:0.7.0"
-    implementation "me.reezy.cosmo:rv-decoration:0.7.0"
+    implementation "me.reezy.cosmo:rv-itemtype:0.10.0"
+    implementation "me.reezy.cosmo:rv-loadmore:0.10.0"
+    implementation "me.reezy.cosmo:rv-selection:0.10.0"
+    implementation "me.reezy.cosmo:rv-decoration:0.10.0"
+    implementation "me.reezy.cosmo:rv-animator:0.10.0"
 }
 ```
 
