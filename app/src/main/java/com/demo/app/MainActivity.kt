@@ -16,12 +16,12 @@ import kotlinx.coroutines.launch
 import me.reezy.cosmo.pullrefresh.PullRefreshLayout
 import me.reezy.cosmo.pullrefresh.simple.SimpleHeader
 import me.reezy.cosmo.rv.animator.BaseItemAnimator
-import me.reezy.cosmo.rv.animator.FadeAnimator
-import me.reezy.cosmo.rv.animator.FlipXAnimator
-import me.reezy.cosmo.rv.animator.FlipYAnimator
-import me.reezy.cosmo.rv.animator.ScaleAnimator
-import me.reezy.cosmo.rv.animator.SlideXAnimator
-import me.reezy.cosmo.rv.animator.SlideYAnimator
+import me.reezy.cosmo.rv.animator.FadeItemAnimator
+import me.reezy.cosmo.rv.animator.FlipXItemAnimator
+import me.reezy.cosmo.rv.animator.FlipYItemAnimator
+import me.reezy.cosmo.rv.animator.ScaleItemAnimator
+import me.reezy.cosmo.rv.animator.SlideXItemAnimator
+import me.reezy.cosmo.rv.animator.SlideYItemAnimator
 import me.reezy.cosmo.rv.itemtype.*
 import me.reezy.cosmo.rv.itemtype.adapter.ItemTypeAdapter
 import me.reezy.cosmo.rv.loadmore.LoadMoreAdapter
@@ -30,33 +30,33 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
     enum class Type(val animator: BaseItemAnimator) {
-        FadeIn(FadeAnimator()),
-        ScaleIn(ScaleAnimator()),
-        Landing(ScaleAnimator(1.5f)),
+        FadeIn(FadeItemAnimator()),
+        ScaleIn(ScaleItemAnimator()),
+        Landing(ScaleItemAnimator(1.5f)),
 
-        ScaleInTop(ScaleAnimator(pivotX = 0.5f, pivotY = 0f)),
-        ScaleInBottom(ScaleAnimator(pivotX = 0.5f, pivotY = 1f)),
-        ScaleInLeft(ScaleAnimator(pivotX = 0f, pivotY = 0.5f)),
-        ScaleInRight(ScaleAnimator(pivotX = 1f, pivotY = 0.5f)),
+        ScaleInTop(ScaleItemAnimator(pivotX = 0.5f, pivotY = 0f)),
+        ScaleInBottom(ScaleItemAnimator(pivotX = 0.5f, pivotY = 1f)),
+        ScaleInLeft(ScaleItemAnimator(pivotX = 0f, pivotY = 0.5f)),
+        ScaleInRight(ScaleItemAnimator(pivotX = 1f, pivotY = 0.5f)),
 
-        FlipInTop(FlipXAnimator(-90f)),
-        FlipInBottom(FlipXAnimator(90f)),
-        FlipInLeft(FlipYAnimator(-90f)),
-        FlipInRight(FlipYAnimator(90f)),
+        FlipInTop(FlipXItemAnimator(-90f)),
+        FlipInBottom(FlipXItemAnimator(90f)),
+        FlipInLeft(FlipYItemAnimator(-90f)),
+        FlipInRight(FlipYItemAnimator(90f)),
 
 
-        FadeInLeft(SlideXAnimator(-0.25f)),
-        FadeInRight(SlideXAnimator(0.25f)),
-        FadeInTop(SlideYAnimator(-0.25f)),
-        FadeInBottom(SlideYAnimator(0.25f)),
+        FadeInLeft(SlideXItemAnimator(-0.25f)),
+        FadeInRight(SlideXItemAnimator(0.25f)),
+        FadeInTop(SlideYItemAnimator(-0.25f)),
+        FadeInBottom(SlideYItemAnimator(0.25f)),
 
-        SlideInLeft(SlideXAnimator(-1f)),
-        SlideInRight(SlideXAnimator(1f)),
-        SlideInTop(SlideYAnimator(-1f)),
-        SlideInBottom(SlideYAnimator(1f)),
+        SlideInLeft(SlideXItemAnimator(-1f)),
+        SlideInRight(SlideXItemAnimator(1f)),
+        SlideInTop(SlideYItemAnimator(-1f)),
+        SlideInBottom(SlideYItemAnimator(1f)),
 
-        OvershootInLeft(SlideXAnimator(-1.0f).setInterceptor(OvershootInterpolator(2f), null)),
-        OvershootInRight(SlideXAnimator(1.0f).setInterceptor(OvershootInterpolator(2f), null)),
+        OvershootInLeft(SlideXItemAnimator(-1.0f).setInterpolator(OvershootInterpolator(2f), null)),
+        OvershootInRight(SlideXItemAnimator(1.0f).setInterpolator(OvershootInterpolator(2f), null)),
     }
 
 

@@ -2,7 +2,7 @@ package me.reezy.cosmo.rv.animator
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class SlideXAnimator(private val from: Float = -1f) : BaseItemAnimator() {
+class SlideXItemAnimator(private val from: Float = -1f) : BaseItemAnimator() {
 
     override fun onAnimateLeave(holder: ViewHolder) {
         holder.itemView.animate().alpha(0f).translationX(from * holder.itemView.width.toFloat())

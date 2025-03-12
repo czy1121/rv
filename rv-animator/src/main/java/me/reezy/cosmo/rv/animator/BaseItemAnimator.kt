@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.TimeInterpolator
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.SimpleItemAnimator
 import kotlin.math.abs
@@ -41,17 +42,17 @@ abstract class BaseItemAnimator : SimpleItemAnimator() {
     private var mRemoveAnimations = ArrayList<ViewHolder?>()
     private var mChangeAnimations = ArrayList<ViewHolder?>()
 
-    private var mLeaveInterceptor: TimeInterpolator? = null
-    private var mEnterInterceptor: TimeInterpolator? = null
+    private var mEnterInterpolator: TimeInterpolator? = AccelerateDecelerateInterpolator()
+    private var mLeaveInterpolator: TimeInterpolator? = mEnterInterpolator
 
 
     init {
         supportsChangeAnimations = false
     }
 
-    fun setInterceptor(enter: TimeInterpolator? = null, leave: TimeInterpolator? = enter): BaseItemAnimator {
-        mEnterInterceptor = enter
-        mLeaveInterceptor = leave
+    fun setInterpolator(enter: TimeInterpolator? = null, leave: TimeInterpolator? = enter): BaseItemAnimator {
+        mEnterInterpolator = enter
+        mLeaveInterpolator = leave
         return this
     }
 
@@ -170,7 +171,7 @@ abstract class BaseItemAnimator : SimpleItemAnimator() {
         onAnimateLeave(holder)
         holder.itemView.animate()
             .setDuration(removeDuration)
-            .setInterpolator(mLeaveInterceptor)
+            .setInterpolator(mLeaveInterpolator)
             .setStartDelay(getLeaveDelay(holder))
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationStart(animation: Animator) {
@@ -204,7 +205,7 @@ abstract class BaseItemAnimator : SimpleItemAnimator() {
         onAnimateEnter(holder)
         holder.itemView.animate()
             .setDuration(addDuration)
-            .setInterpolator(mEnterInterceptor)
+            .setInterpolator(mEnterInterpolator)
             .setStartDelay(getEnterDelay(holder))
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationStart(animation: Animator) {
