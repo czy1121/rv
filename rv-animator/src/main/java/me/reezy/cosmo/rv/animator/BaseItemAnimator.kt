@@ -56,8 +56,8 @@ abstract class BaseItemAnimator : SimpleItemAnimator() {
         return this
     }
 
-    protected fun getLeaveDelay(holder: ViewHolder): Long = abs(holder.oldPosition * removeDuration / 4)
-    protected fun getEnterDelay(holder: ViewHolder): Long = abs(holder.bindingAdapterPosition * addDuration / 4)
+    protected open fun getLeaveDelay(holder: ViewHolder): Long = abs(holder.oldPosition * removeDuration / 4)
+    protected open fun getEnterDelay(holder: ViewHolder): Long = abs(holder.bindingAdapterPosition * addDuration / 4)
 
     protected open fun onPrepareLeave(holder: ViewHolder) {}
     protected open fun onPrepareEnter(holder: ViewHolder) {}
