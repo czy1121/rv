@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 /**
  * 沿Y轴翻转，入场角度(rotation->0)，离场角度(rotation->0)
  * */
-class FlipYItemAnimator(private val rotation: Float = -90f) : BaseItemAnimator() {
+open class FlipYItemAnimator(private val rotation: Float = -90f) : BaseItemAnimator() {
 
     override fun onAnimateLeave(holder: ViewHolder) {
         holder.itemView.animate().alpha(0f).rotationY(rotation)
